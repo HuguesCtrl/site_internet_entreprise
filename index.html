@@ -6,25 +6,229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hugues / Graphiste vidéo</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./mediascreen.css">
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/Fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/Fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/Fav/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
+    <!-- Header du site -->
     <header>
-        <h1>Hugues / Graphiste vidéo</h1>
+        <div class="logo"><img src="./img/Modal/Logo.png" alt="HC" width="30"> <span class="hugues_nom">Hugues / Graphiste vidéo</span></div>
         <nav>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
+            <ul id="nav-links">
                 <li><a href="#services">Services</a></li>
+                <li><a href="#benefices">Bénéfices</a></li>
+                <li><a href="#interviews">Interviews</a></li>
+                <li><a href="#projets">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
     </header>
-
+    <!-- Section hero -->
     <section class="hero">
-        <h1>Bienvenue sur notre site</h1>
-        <p>Découvrez nos offres exceptionnelles et rejoignez-nous dès maintenant !</p>
-        <a href="#contact">Contactez-nous</a>
+        <div class="hero-text">
+            <h1>Communiquer <span class="orange">pour exister</span></h1>
+            <p>Portrait, Témoignage client, Solution vidéo !</p>
+            <!-- Bouton pour ouvrir la modale -->
+            <button id="openModalBtn" class="btn">Qui suis-je ?</button>
+        </div>
+
+        <!-- La modale -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModalBtn" class="close">&times;</span>
+                <img src="./img/Modal/IMG_9042.png" alt="Photo de Blade Runner" class="hugues_photo">
+                <div class="text-modal">
+                    <h2>Hugues <span class="orange">/ Graphiste vidéo</span></h2>
+                    <p>Je m'appelle Hugues, j'ai 26 ans.<br>
+                        Je suis passionné par le montage vidéo et le cinéma. <br>Mes films favoris sont Blade Runner, Terminator, Robocop, Rambo, Indiana Jones...
+                    </p>
+                    <img src="./img/Modal/Montage_Films.jpg" alt="Films_80" class="img_montage">
+                </div>
+            </div>
+        </div>
     </section>
+    <!-- Section mes services -->
+    <section id="services">
+        <!-- <img src="./img/HaltoneOrange.png" alt="halftone-image" class="image-absolute"> -->
+        <h2 id="services-h2">En quoi consiste <span class="orange">mon service ?</span></h2>
+        <div class="cards-section">
+            <div class="card card-services-1">
+                <img src="./img/Service/01.jpg" alt="Image 1">
+                <div class="cards-bottom">
+                    <h3><i class="fa-solid fa-circle-check"></i> Communication</h3>
+                    <p>Dans un monde où le visuel domine,
+                        je vous propose <span class="bold">un service clé en main</span>
+                        pour la création de vidéos optimisées
+                        <span class="bold">pour votre communication.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="card card-services-2">
+                <img src="./img/Service/02.jpg" alt="Image 2">
+                <div class="cards-bottom">
+                    <h3><i class="fa-solid fa-circle-check"></i> Apprentissage</h3>
+                    <p>Vous n'avez pas à apprendre <span class="bold">le métier.</span>
+                        Vous recevrez une vidéo de qualité,
+                        avec une image et un son professionnel,
+                        qui aborde une problématique<span class="bold"> de manière structurée.</span></p>
+                </div>
+            </div>
+            <div class="card card-services-3">
+                <img src="./img/Service/03.jpg" alt="Image 3">
+                <div class="cards-bottom">
+                    <h3><i class="fa-solid fa-circle-check"></i> Objectif</h3>
+                    <p>L'objectif n'est pas simplement de produire une vidéo,
+                        <span class="bold">mais de vous aider</span> à atteindre vos objectifs
+                        en tirant pleinement parti de ce puissant
+                        <span class="bold">levier de communication.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Section les bénéfices -->
+    <section class="accordion-section" id="benefices">
+        <div class="accordion-size">
+            <h2>Pourquoi choisir <span class="orange">la vidéo ?</span> <i class="fa-solid fa-thumbs-up orange"></i></h2>
+            <div class="accordion-1">
+                <button class="accordion">
+                    <div>La vidéo est le <span class="bold">format le plus regardé</span> sur Internet</div>
+                </button>
+                <div class="panel">
+                    <p>Elle favorise l’engagement et <span class="bold">renforce la confiance</span>
+                        entre vous et vos <span class="bold">clients ou prospects.</span></p>
+                </div>
+            </div>
+            <div class="accordion-2">
+                <button class="accordion">
+                    <div>La vidéo est un puissant <span class="bold">outil de conversion</span></div>
+                </button>
+                <div class="panel">
+                    <p>Une vidéo bien conçue <span class="bold">peut encourager les achats,</span>
+                        les inscriptions ou toute autre action <span class="bold">que vous souhaitez.</span></p>
+                </div>
+            </div>
+            <div class="accordion-3">
+                <button class="accordion">
+                    <div>Une vidéo améliore votre <span class="bold">image de marque</span></div>
+                </button>
+                <div class="panel">
+                    <p>Cela renforce votre présence dans <span class="bold">l'esprit des visiteurs</span>
+                        et vous aide à vous <span class="bold">démarquer de la concurrence.</span></p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Section face caméra -->
+    <!-- Services Section -->
+    <section class="services-section" id="interviews">
+        <h2>Comment se déroule <span class="orange">une interview ?</span></h2>
+        <div class="services-container">
+            <!-- Service 1 -->
+            <div class="service service-1">
+                <div class="service-content">
+                    <h3> Conseils sur le <span class="orange">contenu à dire <i class="fa-solid fa-check"></i></span></h3>
+                    <p class="para-services">Je vous accompagne pour <span class="bold">structurer et clarifier</span> votre message
+                        afin qu'il soit à la fois percutant et fluide.
+                        Ensemble, nous définirons <span class="bold">les points clés</span> à aborder
+                        en lien <span class="bold">avec votre sujet.</span>
+                    </p>
+                </div>
+            </div>
+            <!-- Service 2 -->
+            <div class="service service-2">
+                <div class="service-content">
+                    <h3>Accompagnement <span class="orange">devant la caméra <i class="fa-solid fa-check"></i></span></h3>
+                    <p class="para-services">Se retrouver devant une caméra
+                        <span class="bold">peut être intimidant.</span> <br>Mon objectif est de <span class="bold">vous guider
+                            et de vous conseiller,</span> tout en veillant à ce que vous vous sentiez
+                        à l’aise et naturel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projets">
+        <div class="projects-section">
+            <h2>Interviews <span class="orange">face caméra</span> <i class="fa-solid fa-video orange"></i></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="./img/Projects/Projet-1.jpg" alt="Projet 1">
+                    <h3>Ecole <span class="orange">Lybre</span></h3>
+                    <p>Présentation de l'École Lybre avec <span class="bold">la co-fondatrice.</span><br>École basée sur les savoir-être.</p>
+                    <a href="https://www.flickr.com/photos/199509818@N02/54009223925/in/dateposted-public/" target="_blank" class="link-project">Voir le projet <i class="fa-solid fa-eye"></i></a>
+                </div>
+                <div class="project-card">
+                    <img src="./img/Projects/Projet-2.jpg" alt="Projet 2">
+                    <h3>Si tu étais <span class="orange">un site Internet ?</span></h3>
+                    <p>Portrait chinois avec les étudiants en <span class="bold">Bachelor Commercial.</span>
+                        Si tu étais ? (Volume 1)</p>
+                    <a href="https://www.flickr.com/photos/199509818@N02/54009002183/in/dateposted-public/" target="_blank" class="link-project">Voir le projet <i class="fa-solid fa-eye"></i></a>
+                </div>
+                <div class="project-card">
+                    <img src="./img/Projects/Projet-3.jpg" alt="Projet 3">
+                    <h3>Si tu étais <span class="orange">un animal ?</span></h3>
+                    <p>Portrait chinois avec les étudiants en <span class="bold">Bachelor Commercial.</span>
+                        Si tu étais ? (Volume 2)</p>
+                    <a href="https://www.flickr.com/photos/199509818@N02/53986371312/in/dateposted-public/" target="_blank" class="link-project">Voir le projet <i class="fa-solid fa-eye"></i></a>
+                </div>
+                <div class="project-card">
+                    <img src="./img/Projects/Projet-4.jpg" alt="Projet 4">
+                    <h3>Portrait <span class="orange">de jeune</span></h3>
+                    <p>Portrait d'une jeune de la <span class="bold">Milo de Reims.</span> Découvrez Louna, artiste musicale, auteure, compositrice et interprète.</p>
+                    <a href="https://www.flickr.com/photos/199509818@N02/54009173049/in/album-72177720320470907/" target="_blank" class="link-project">Voir le projet <i class="fa-solid fa-eye"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section contact -->
+    <section class="contact-section" id="contact">
+        <h2>Contactez<span class="orange">-moi</span></h2>
+        <form action="mailto:votreemail@example.com" method="POST" enctype="text/plain">
+            <!-- <label for="name">Nom :</label> -->
+            <input type="text" id="name" name="Nom" placeholder="Votre nom" required>
+
+            <!-- <label for="email">Email :</label> -->
+            <input type="email" id="email" name="Email" placeholder="Votre adresse email" required>
+
+            <!-- <label for="message">Message :</label> -->
+            <textarea id="message" name="Message" placeholder="Votre message" required></textarea>
+
+            <button type="submit">Soumettre votre message <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4 class="orange">Copyright</h4>
+                <p>©2024 - Hugues Collet</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="orange">Mail / Téléphone</h4>
+                <p><a href="mailto:hc.pro@outlook.fr">hc.pro@outlook.fr</a></p>
+                <p>06 52 88 20 99</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="orange">Profil professionnel</h4>
+                <a href="https://www.linkedin.com/in/hugues-collet-856175198/" target="_blank" class="linked">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

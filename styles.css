@@ -1,40 +1,868 @@
+@font-face {
+    font-family: 'Police_Perso';
+    /* Nom de la police */
+    src: url('./img/Font/NeusharpBold-7B8RV.otf') format('opentype'),
+        /* Police au format otf */
+        font-weight: normal;
+    /* Peut être 'normal' ou 'bold' */
+    font-style: normal;
+    /* Peut être 'normal', 'italic', etc. */
+}
+
+
+/* Import des fonts */
+/* Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    user-select: none;
+}
+
 body {
+    font-family: "Montserrat", sans-serif;
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Police_Perso', serif;
+}
+
+/* Stylisation du header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.orange {
+    color: #f39c12;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+
+/* Hamburger Menu (Pour petit écrans) */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
 }
 
 .hero {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: url('votre-image-de-fond.jpg') no-repeat center center/cover;
-    color: white;
     text-align: center;
-    padding: 0 20px;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    margin: 0;
-}
-
-.hero p {
-    font-size: 1.5rem;
-    margin: 10px 0;
-}
-
-.hero a {
-    text-decoration: none;
-    background-color: #007bff;
+    gap: 30px;
+    height: 40vh;
+    align-items: center;
+    font-size: 25px;
+    background-image: radial-gradient(circle at center center, rgba(33, 33, 33, 0), rgb(33, 33, 33)), repeating-linear-gradient(135deg, rgb(33, 33, 33) 0px, rgb(33, 33, 33) 1px, transparent 1px, transparent 4px), repeating-linear-gradient(45deg, rgb(56, 56, 56) 0px, rgb(56, 56, 56) 5px, transparent 5px, transparent 6px), linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
     color: white;
-    padding: 15px 30px;
+}
+
+.hero-text h1 {
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    margin-bottom: 50px;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+/* Media Queries pour petits écrans */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        background-color: #333;
+        transition: all 0.3s ease;
+    }
+
+    nav ul li {
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+}
+
+/* Section styles for anchors */
+section {
+    padding: 50px;
+    background-color: #f5f5f5;
+}
+
+section:nth-child(even) {
+    background-color: #eee;
+}
+
+/* Fenêtre modale ----------------------------------------------------------------*/
+.btn {
+    background-color: #f39c12;
+    /* Blue background */
+    color: white;
+    /* White text */
+    border: none;
+    padding: 15px 40px;
+    font-size: 22px;
+    cursor: pointer;
     border-radius: 5px;
-    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #f35212;
+    /* Darker blue on hover */
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 10;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal content */
+.modal-content {
+    background-image: repeating-linear-gradient(135deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(45deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, hsl(183, 0%, 100%), hsl(183, 0%, 100%));
+    margin: 8% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    width: 55%;
+    /* Could be more or less, depending on screen size */
+    border-radius: 5px;
+    display: flex;
+    padding-bottom: 0;
+    align-items: center;
+    height: 600px;
+    z-index: 10;
+}
+
+.modal-content img {
+    height: 100%;
+}
+
+.modal-content h2 {
+    color: #333;
+}
+
+.modal-content p {
+    color: #333;
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+.modal-content
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    flex
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#closeModalBtn {
+    align-self: flex-start;
+}
+
+.text-modal {
+    user-select: none;
+    margin-right: 25px;
+}
+
+.text-modal h2 {
+    margin-top: 0;
+}
+
+.text-modal p {
+    margin-bottom: 30px;
+}
+
+.img_montage {
+    width: 400px;
+    border-radius: 15px;
+    border: 5px solid #f39c12;
+    transition: 0.2s transform ease;
+    cursor: pointer;
+}
+
+.img_montage:hover {
+    transform: scale(1.1);
+}
+
+.hero-text {
+    margin: 0 auto;
+}
+
+/* Global Styles */
+.dynamic-section {
+    position: relative;
+    /* Needed for absolute positioning */
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 100px 20px;
+    overflow: hidden;
+    /* Prevent elements from overflowing */
+}
+
+.dynamic-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.dynamic-section p {
+    font-size: 18px;
+    color: #444;
+}
+
+/* Decorative Circles */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 87, 51, 0.7);
+    /* Semi-transparent orange */
+    z-index: -1;
+    /* Behind the content */
+}
+
+.circle-1 {
+    width: 150px;
+    height: 150px;
+    top: 20%;
+    left: 10%;
+}
+
+.circle-2 {
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    right: 8%;
+}
+
+/* Decorative Triangles */
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: -1;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid rgba(52, 152, 219, 0.7);
+    /* Semi-transparent blue */
+}
+
+.triangle-1 {
+    top: 5%;
+    right: 25%;
+}
+
+.triangle-2 {
+    bottom: 10%;
+    left: 20%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .circle-1 {
+        width: 100px;
+        height: 100px;
+        top: 10%;
+        left: 5%;
+    }
+
+    .circle-2 {
+        width: 130px;
+        height: 130px;
+        bottom: 10%;
+        right: 5%;
+    }
+
+    .triangle-1,
+    .triangle-2 {
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 70px solid rgba(52, 152, 219, 0.7);
+        /* Smaller triangles */
+    }
+}
+
+@media (max-width: 480px) {
+
+    .circle-1,
+    .circle-2 {
+        width: 80px;
+        height: 80px;
+    }
+
+    .triangle-1,
+    .triangle-2 {
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+        border-bottom: 50px solid rgba(52, 152, 219, 0.7);
+        /* Even smaller triangles */
+    }
+}
+
+
+
+/* Section cartes ----------------------------------------------------------------*/
+
+#services {
+    background-image: repeating-linear-gradient(135deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(45deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, hsl(183, 0%, 100%), hsl(183, 0%, 100%));
+    padding-bottom: 120px;
+    position: relative;
+}
+
+.image-absolute {
+    position: absolute;
+    top: 100px;
+    left: 1600px;
+    width: 200px;
+    height: auto;
+    z-index: 1;
+}
+
+.cards-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cards-section>* {
+    width: calc(33% - 30px);
+}
+
+.cards-bottom {
+    padding: 50px 0;
+}
+
+#services-h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+.card p {
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.card button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.hero a:hover {
+.card button:hover {
     background-color: #0056b3;
+}
+
+/* Accordéon FAQ ----------------------------------------------------------------*/
+.accordion-section {
+    background-image: radial-gradient(circle at center center, rgba(33, 33, 33, 0), rgb(33, 33, 33)), repeating-linear-gradient(135deg, rgb(33, 33, 33) 0px, rgb(33, 33, 33) 1px, transparent 1px, transparent 4px), repeating-linear-gradient(45deg, rgb(56, 56, 56) 0px, rgb(56, 56, 56) 5px, transparent 5px, transparent 6px), linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+    color: white;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.accordion-section h2 {
+    margin-top: 0;
+}
+
+.accordion-size {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.accordion-size h2 {
+    text-align: center;
+}
+
+.accordion {
+    background-color: #f1eded;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    /* border-bottom: 1px solid #ccc; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0;
+}
+
+.accordion:hover {
+    background-color: #f1f1f1;
+}
+
+.accordion:after {
+    content: '\002B';
+    /* Plus symbol */
+    font-size: 25px;
+    color: black;
+    float: right;
+}
+
+.accordion.active:after {
+    content: '\2212';
+    /* Minus symbol */
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    /* border-bottom: 1px solid #ccc; */
+}
+
+.panel p {
+    padding: 18px 0;
+    font-size: 16px;
+    color: #444;
+    font-weight: 500;
+}
+
+/* Section carte ----------------------------------------------------------------*/
+
+.services-section {
+    text-align: center;
+    padding: 70px 20px 100px;
+    background-image: repeating-linear-gradient(135deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(45deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, hsl(183, 0%, 100%), hsl(183, 0%, 100%));
+}
+
+.services-section h2 {
+    margin-bottom: 40px;
+    margin-top: 0;
+}
+
+/* Container for the services */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* Each service block */
+.service {
+    background-color: white;
+    /* width: 45%; */
+    min-width: 280px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect */
+.service:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    background-image: radial-gradient(circle at center center, rgba(33, 33, 33, 0), rgb(33, 33, 33)), repeating-linear-gradient(135deg, rgb(33, 33, 33) 0px, rgb(33, 33, 33) 1px, transparent 1px, transparent 4px), repeating-linear-gradient(45deg, rgb(56, 56, 56) 0px, rgb(56, 56, 56) 5px, transparent 5px, transparent 6px), linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+    color: white;
+    cursor: pointer;
+}
+
+/* Service content */
+.service-content h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.service:hover h3 {
+    color: orange;
+}
+
+.service-content p {
+    font-size: 16px;
+    /* color: #555; */
+    margin-bottom: 20px;
+}
+
+.service-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.service-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services-section h2 {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .service-content h3 {
+        width: 65%;
+    }
+}
+
+
+/* Section projet ----------------------------------------------------------------*/
+#projets {
+    background-image: radial-gradient(circle at center center, rgba(33, 33, 33, 0), rgb(33, 33, 33)), repeating-linear-gradient(135deg, rgb(33, 33, 33) 0px, rgb(33, 33, 33) 1px, transparent 1px, transparent 4px), repeating-linear-gradient(45deg, rgb(56, 56, 56) 0px, rgb(56, 56, 56) 5px, transparent 5px, transparent 6px), linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+}
+
+.projects-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.projects-section h2 {
+    margin-top: 15px;
+    margin-bottom: 50px;
+    color: white;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.project-card h3 {
+    font-size: 24px;
+    margin: 15px 0;
+    color: #333;
+}
+
+.project-card p {
+    font-size: 16px;
+    color: #666;
+}
+
+.link-project {
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    color: white;
+    background-color: #f39c12;
+    padding: 20px 10px;
+    border-radius: 8px;
+    display: block;
+    /* width: 40%; */
+    margin: 0 auto;
+}
+
+.link-project:hover {
+    background-color: #f35212;
+}
+
+.fa-eye {
+    margin-left: 5px;
+}
+
+.btn-link {
+    padding: 0;
+}
+
+.btn-link a {
+    padding: 20px;
+}
+
+/* Media Queries for mobile screens */
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Section contact ----------------------------------------------------------------*/
+.contact-section {
+    width: 100%;
+    background-image: repeating-linear-gradient(135deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(45deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, hsl(183, 0%, 100%), hsl(183, 0%, 100%));
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.fa-paper-plane {
+    margin-left: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #555;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+
+}
+
+textarea {
+    resize: none;
+    height: 150px;
+}
+
+button {
+    padding: 15px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f35212;
+}
+
+@media (max-width: 600px) {
+    .contact-section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
+
+.footer {
+    background-color: #333;
+    /* Dark background color */
+    color: white;
+    /* White text */
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* Space between sections */
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    /* Ensures sections do not get too small */
+    max-width: 300px;
+    /* Maximum width of each section */
+}
+
+.footer-section h4 {
+    margin-top: 0;
+}
+
+.footer-section p,
+.footer-section a {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer-section .linked:hover {
+    text-decoration: none;
+}
+
+.footer-section p a:hover {
+    text-decoration: none;
+}
+
+.footer-section a {
+    color: white;
+    /* Light blue color for links */
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h4.orange {
+        margin-bottom: 10px;
+    }
 }

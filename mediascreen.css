@@ -1,0 +1,161 @@
+@media (max-width: 1500px) {
+    .services-container {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 600px;
+    }
+
+    .services-section {
+        padding-bottom: 70px;
+    }
+
+    .modal-content {
+        width: fit-content;
+    }
+
+    .hugues_photo {
+        display: none;
+    }
+
+    .text-modal p {
+        width: 70%;
+    }
+
+}
+
+
+@media (max-width: 1200px) {
+    .cards-section>* {
+        width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 990px) {
+    .hugues_nom {
+        font-size: 15px;
+    }
+
+    .cards-section>* {
+        width: calc(60% - 30px);
+    }
+
+}
+
+@media (max-width: 1100px) {
+    .projects-grid {
+        width: 70%;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 0 auto;
+    }
+
+    .project-card img {
+        height: 400px;
+    }
+
+}
+
+@media (max-width: 880px) {
+    .hugues_nom {
+        display: none;
+    }
+
+    .accordion-section {
+        padding-top: 60px;
+    }
+
+    .services-section {
+        padding-bottom: 70px;
+        padding-top: 50px;
+    }
+
+    .services-section h2 {
+        margin-bottom: 40px;
+    }
+
+    #services {
+        padding-bottom: 80px;
+    }
+
+    .service {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .service h3 {
+        width: 100%;
+    }
+
+    . .card-services-1 {
+        grid-column: 1 / 4;
+    }
+
+    .card-services-2 {
+        grid-column: 4 /7;
+    }
+
+    .card-services-3 {
+        grid-column: 2 / 6;
+    }
+
+    .projects-grid {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .text-modal p {
+        width: 100%;
+    }
+
+    .cards-section {
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+    }
+
+    nav ul {
+        padding: 0;
+        margin-top: 0;
+    }
+
+    form {
+        width: 80%;
+    }
+
+    .project-card img {
+        height: 200px;
+    }
+
+    .contact-section h2 {
+        margin-top: 10px;
+    }
+
+    .hero-text h1 {
+        margin-top: 0;
+    }
+
+    .cards-section>* {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .cards-section img {
+        height: 200px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        width: 100%;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .hero {
+        padding: 30px;
+    }
+}
