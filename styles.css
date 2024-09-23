@@ -783,6 +783,16 @@ button:hover {
     background-color: #f35212;
 }
 
+#feedback {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
 @media (max-width: 600px) {
     .contact-section {
         padding: 20px;
