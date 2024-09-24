@@ -96,6 +96,22 @@ nav ul li a:hover {
     color: white;
 }
 
+@media (max-width: 500px) {
+    .hero {
+        height: 30vh;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero {
+        height: 30vh;
+    }
+
+    .hero-text p {
+        font-size: 20px;
+    }
+}
+
 .hero-text h1 {
     margin-bottom: 10px;
 }
@@ -184,21 +200,44 @@ section:nth-child(even) {
 /* Modal content */
 .modal-content {
     background-image: repeating-linear-gradient(135deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(45deg, hsla(35, 0%, 71%, 0.09) 0px, hsla(35, 0%, 71%, 0.09) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, hsl(183, 0%, 100%), hsl(183, 0%, 100%));
-    margin: 8% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    width: 55%;
-    /* Could be more or less, depending on screen size */
-    border-radius: 5px;
-    display: flex;
-    padding-bottom: 0;
+    display: grid;
+    grid-template-columns: 50px auto 1fr;
+    justify-items: center;
     align-items: center;
-    height: 600px;
-    z-index: 10;
+    border-radius: 10px;
+    margin: 8% auto;
+    width: 55%;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-bottom: 0;
 }
 
-.modal-content img {
-    height: 100%;
+.modal-content p {
+    width: 100%;
+}
+
+.hugues_photo {
+    height: 600px;
+    align-items: bottom;
+}
+
+.img_montage {
+    width: 400px;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    border: 5px solid #f39c12;
+    transition: 0.2s transform ease;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.img_montage:hover {
+    transform: scale(1.1);
+}
+
+.img_montage_container {
+    width: 100%;
 }
 
 .modal-content h2 {
@@ -211,7 +250,71 @@ section:nth-child(even) {
     margin: 0 auto;
 }
 
-.modal-content
+@media (max-width: 1800px) {
+    .modal-content {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1500px) {
+    .modal-content {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .modal-content {
+        width: 70%;
+        padding: 40px;
+    }
+
+    .hugues_photo {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .modal-content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 50px;
+        position: relative;
+        grid-template-columns: 1fr;
+    }
+
+    .text-modal p {
+        font-size: 16px;
+        width: 80%;
+    }
+
+    #closeModalBtn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    .img_montage {
+        width: 350px;
+    }
+}
+
+@media (max-width: 500px) {
+    #openModalBtn {
+        display: none;
+    }
+}
 
 /* Close button */
 .close {
@@ -235,7 +338,7 @@ section:nth-child(even) {
 
 .text-modal {
     user-select: none;
-    margin-right: 25px;
+    height: auto;
 }
 
 .text-modal h2 {
@@ -244,18 +347,6 @@ section:nth-child(even) {
 
 .text-modal p {
     margin-bottom: 30px;
-}
-
-.img_montage {
-    width: 400px;
-    border-radius: 15px;
-    border: 5px solid #f39c12;
-    transition: 0.2s transform ease;
-    cursor: pointer;
-}
-
-.img_montage:hover {
-    transform: scale(1.1);
 }
 
 .hero-text {

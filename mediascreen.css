@@ -8,22 +8,11 @@
         padding-bottom: 70px;
     }
 
-    .modal-content {
-        width: fit-content;
-    }
-
-    .hugues_photo {
-        display: none;
-    }
-
-    .text-modal p {
-        width: 70%;
-    }
-
 }
 
 
 @media (max-width: 1200px) {
+
     .cards-section>* {
         width: calc(50% - 30px);
     }
@@ -54,6 +43,7 @@
 }
 
 @media (max-width: 880px) {
+
     .hugues_nom {
         display: none;
     }
@@ -104,10 +94,6 @@
 
 @media (max-width: 800px) {
 
-    .text-modal p {
-        width: 100%;
-    }
-
     .cards-section {
         grid-template-columns: repeat(1, 1fr);
         width: 100%;
@@ -120,10 +106,6 @@
 
     form {
         width: 80%;
-    }
-
-    .project-card img {
-        height: 200px;
     }
 
     .contact-section h2 {
@@ -151,11 +133,56 @@
 
     .hero p {
         width: 100%;
-        font-size: 14px;
-        margin-bottom: 25px;
+        /* font-size: 16px; */
+        margin-bottom: 40px;
     }
 
     .hero {
         padding: 30px;
+    }
+
+    .project-card img {
+        height: 300px;
+    }
+}
+
+/* Très petit écrans */
+@media (max-width: 400px) {
+
+    .cards-bottom {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .cards-section>* {
+        width: 100%;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .service {
+        padding: 20px;
+    }
+
+    .services-section h2 {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    #services {
+        padding-bottom: 50px;
+    }
+
+    #services h2 {
+        margin-bottom: 30px;
     }
 }
