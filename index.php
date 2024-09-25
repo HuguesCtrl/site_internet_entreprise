@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    <?php include 'envoyer_mail.php'; ?>
     <!-- Header du site -->
     <header>
         <div class="logo"><img src="./img/Modal/Logo.png" alt="HC" width="30"> <span class="hugues_nom">Hugues / Graphiste vidéo</span></div>
@@ -200,15 +201,15 @@
     <!-- Section contact -->
     <section class="contact-section" id="contact">
         <h2>Contactez<span class="orange">-moi</span></h2>
-        <form action="https://formspree.io/f/mblrvvwy" method="post" id="contact-form">
+        <form action="envoyer_mail.php" method="POST" id="contact-form">
             <!-- <label for="name">Nom :</label> -->
-            <input type="text" id="name" name="Nom" placeholder="Votre nom" required>
+            <input type="text" id="name" name="name" placeholder="Votre nom" required>
 
             <!-- <label for="email">Email :</label> -->
-            <input type="email" id="email" name="Email" placeholder="Votre adresse email" required>
+            <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
 
             <!-- <label for="message">Message :</label> -->
-            <textarea id="message" name="Message" placeholder="Votre message" required></textarea>
+            <textarea id="message" name="message" placeholder="Votre message" required></textarea>
 
             <button type="submit">Soumettre votre message <i class="fa-solid fa-paper-plane"></i></button>
         </form>
