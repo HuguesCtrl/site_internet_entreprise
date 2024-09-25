@@ -25,11 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
         // Envoie l'e-mail
-        if (mail($destinataire, $sujet, $contenu, $headers)) {
-            echo "Message envoyé avec succès !";
-        } else {
-            echo "Échec de l'envoi du message.";
-        }
+        // if (mail($destinataire, $sujet, $contenu, $headers)) {
+        //     echo "Message envoyé avec succès !";
+        // } else {
+        //     echo "Échec de l'envoi du message.";
+        // }
     } else {
         echo "Adresse email invalide.";
     }
