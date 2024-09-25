@@ -67,5 +67,5 @@ document
     }, 2000);
 
     // Effacer le formulaire après soumission
-    document.getElementById("contact-form").reset();
+    // document.getElementById("contact-form").reset();
   });
