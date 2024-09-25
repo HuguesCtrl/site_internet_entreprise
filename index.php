@@ -19,7 +19,6 @@
 </head>
 
 <body>
-    <?php include 'envoyer_mail.php'; ?>
     <!-- Header du site -->
     <header>
         <div class="logo"><img src="./img/Modal/Logo.png" alt="HC" width="30"> <span class="hugues_nom">Hugues / Graphiste vidéo</span></div>
@@ -201,7 +200,7 @@
     <!-- Section contact -->
     <section class="contact-section" id="contact">
         <h2>Contactez<span class="orange">-moi</span></h2>
-        <form action="envoyer_mail.php" method="POST" id="contact-form">
+        <form method="POST" id="contact-form">
             <!-- <label for="name">Nom :</label> -->
             <input type="text" id="name" name="name" placeholder="Votre nom" required>
 
@@ -233,6 +232,23 @@
             </div>
         </div>
     </footer>
+
+    <?php
+//Si le formulaire a été soumis
+if(isset($_POST["message"])){
+    $message = "Ce message vous a été envoyé via la page contact Hugues / Graphiste vidéo
+    Nom : " . $POST["name"] . "
+    Email: " . $POST["email"] . "
+    Message: " .$POST["message"];
+
+
+    $retour = mail("contact@hugues-graphiste-video.com",$_POST[`name`],$message, "From:contact@hugues-graphiste-video.com\r\nReply-to:" . $_POST[`email`])
+    
+    if($retour){
+        echo "<p>L'email a bien été envoyé</p>";
+    }
+}
+?>
 </body>
 
 </html>
