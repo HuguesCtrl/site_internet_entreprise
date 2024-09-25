@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST['message'];
 
     // Définir l'adresse email de destination (remplace par ton adresse)
-    $destinataire = "contact@hugues-graphiste-video.com";
+    $destinataire = "votre-email@example.com";
 
     // Sujet de l'e-mail
     $sujet = "Nouveau message de " . $nom;
@@ -19,8 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // En-têtes pour l'e-mail
     $headers = "From: " . $email . "\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
+
+    // Envoi de l'e-mail
+    if (mail($destinataire, $sujet, $contenu, $headers)) {
+        echo "Message envoyé avec succès !";
+    } else {
+        echo "Échec de l'envoi du message.";
+    }
 }
 ?>
+
 
 
 
