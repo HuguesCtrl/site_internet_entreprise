@@ -69,24 +69,3 @@ document
     // Effacer le formulaire après soumission
     document.getElementById("contact-form").reset();
   });
-
-$(document).ready(function () {
-  $("#contactForm").on("submit", function (e) {
-    e.preventDefault(); // Empêche le rechargement de la page
-
-    // Envoi des données via AJAX
-    $.ajax({
-      type: "POST",
-      url: "envoyer_mail.php", // URL du fichier PHP qui traite le formulaire
-      data: $(this).serialize(), // Sérialisation des données du formulaire
-      success: function (response) {
-        // Affiche la réponse du serveur
-        $("#messageStatus").html(response); // Affiche le message de succès ou d'erreur
-      },
-      error: function () {
-        // Affiche un message d'erreur si la requête échoue
-        $("#messageStatus").html("Erreur lors de l'envoi du message.");
-      },
-    });
-  });
-});
