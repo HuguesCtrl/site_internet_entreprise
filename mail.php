@@ -19,13 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // En-têtes pour l'e-mail
     $headers = "From: " . $email . "\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
-
-    // Envoi de l'e-mail
-    if (mail($destinataire, $sujet, $contenu, $headers)) {
-        echo "Message envoyé avec succès !";
-    } else {
-        echo "Échec de l'envoi du message.";
-    }
 }
 ?>
 
