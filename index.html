@@ -244,10 +244,13 @@
             event.preventDefault(); // Empêche le rechargement de la page
             emailjs.sendForm('service_ehvwy7q', 'template_yxn8b4d', this)
                 .then(function () {
-                    document.getElementById('status').innerHTML = "Message envoyé avec succès!";
+                    document.getElementById("feedback").classList.remove("hidden");
+                    setTimeout(function () {
+                        document.getElementById("feedback").classList.add("hidden");
+                    }, 3000);
                     document.getElementById('contact-form').reset(); // Effacer les champs du formulaire
                 }, function (error) {
-                    document.getElementById('status').innerHTML = "Erreur lors de l'envoi du message.";
+                    document.getElementById('feedback').innerHTML = "Erreur lors de l'envoi du message.";
                 });
         });
     </script>
