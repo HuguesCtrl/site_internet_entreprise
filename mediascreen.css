@@ -139,6 +139,7 @@
 
     .hero {
         padding: 30px;
+        padding-bottom: 0;
     }
 
     .project-card img {
