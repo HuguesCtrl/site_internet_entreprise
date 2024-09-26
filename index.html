@@ -16,6 +16,12 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("nFo6bWaT9A-8FDEEe"); // Ajoutez votre ID utilisateur EmailJS
+        })();
+    </script>
 </head>
 
 <body>
@@ -200,7 +206,7 @@
     <!-- Section contact -->
     <section class="contact-section" id="contact">
         <h2>Contactez<span class="orange">-moi</span></h2>
-        <form id="contact-form" method="POST" action="mail.php">
+        <form id="contact-form">
             <!-- <label for="nom">Nom :</label><br> -->
             <input type="text" id="name" name="name" required placeholder="Votre nom"><br><br>
 
@@ -210,7 +216,7 @@
             <!-- <label for="message">Message :</label><br> -->
             <textarea id="message" name="message" rows="5" required placeholder="Votre message"></textarea><br><br>
 
-            <button class="button">Soumettre votre message <i class="fa-solid fa-paper-plane"></i></button>
+            <button class="button" type="submit">Soumettre votre message <i class="fa-solid fa-paper-plane"></i></button>
         </form>
         <!-- Paragraphe pour afficher le message de validation -->
         <p id="feedback" class="hidden">Merci pour votre message, <span class="orange">je vous répondrai très bientôt !</span></p>
@@ -234,35 +240,14 @@
         </div>
     </footer>
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Empêche le rechargement de la page
-
-            // Récupérer les données du formulaire
-            const formData = new FormData(this);
-
-            // Envoi AJAX
-            fetch('send_email.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json()) // On attend une réponse JSON du serveur
-                .then(data => {
-                    const responseMessage = document.getElementById('responseMessage');
-
-                    if (data.success) {
-                        responseMessage.textContent = 'Le message a été envoyé avec succès !';
-                        responseMessage.className = 'success';
-
-                        // Effacer les champs du formulaire
-                        document.getElementById('contactForm').reset();
-                    } else {
-                        responseMessage.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
-                        responseMessage.className = 'error';
-                    }
-                })
-                .catch(error => {
-                    document.getElementById('responseMessage').textContent = 'Erreur : ' + error;
-                    document.getElementById('responseMessage').className = 'error';
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            emailjs.sendForm('service_ehvwy7q', 'template_yxn8b4d', this)
+                .then(function () {
+                    document.getElementById('status').innerHTML = "Message envoyé avec succès!";
+                    document.getElementById('contact-form').reset(); // Effacer les champs du formulaire
+                }, function (error) {
+                    document.getElementById('status').innerHTML = "Erreur lors de l'envoi du message.";
                 });
         });
     </script>
