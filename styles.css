@@ -859,7 +859,8 @@ textarea {
     height: 150px;
 }
 
-button {
+button,
+.button {
     padding: 15px;
     background-color: #f39c12;
     color: white;
@@ -870,7 +871,8 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover,
+.button:hover {
     background-color: #f35212;
 }
 
@@ -882,6 +884,11 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+#contact-form input,
+#contact-form textarea {
+    margin-bottom: 0;
 }
 
 @media (max-width: 600px) {

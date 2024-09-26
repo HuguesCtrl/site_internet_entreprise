@@ -65,7 +65,5 @@ document
     setTimeout(function () {
       document.getElementById("feedback").classList.add("hidden");
     }, 2000);
-
-    // Effacer le formulaire après soumission
     document.getElementById("contact-form").reset();
   });

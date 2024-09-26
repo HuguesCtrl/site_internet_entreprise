@@ -200,19 +200,21 @@
     <!-- Section contact -->
     <section class="contact-section" id="contact">
         <h2>Contactez<span class="orange">-moi</span></h2>
-        <form action="mail.php" method="POST" id="contact-form">
-            <!-- <label for="name">Nom :</label> -->
-            <input type="text" id="name" name="nom" placeholder="Votre nom" required>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="7c59f497-28b5-4a05-9308-7c12fec876a8">
+            <!-- <label for="nom">Nom :</label><br> -->
+            <input type="text" id="nom" name="nom" required placeholder="Votre nom"><br><br>
 
-            <!-- <label for="email">Email :</label> -->
-            <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+            <!-- <label for="email">Email :</label><br> -->
+            <input type="email" id="email" name="email" required placeholder="Votre e-mail"><br><br>
 
-            <!-- <label for="message">Message :</label> -->
-            <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+            <!-- <label for="message">Message :</label><br> -->
+            <textarea id="message" name="message" rows="5" required placeholder="Votre message"></textarea><br><br>
 
-            <button type="submit">Soumettre votre message <i class="fa-solid fa-paper-plane"></i></button>
+            <input type="submit" value="Soumettre votre message" class="button">
         </form>
-        <p id="feedback" class="hidden">Merci pour votre message ! <span class="orange">Je vous répondrai bientôt.</span></p>
+        <!-- Div pour afficher le message de validation -->
+        <div id="messageStatus"></div>
     </section>
     <!-- Footer -->
     <footer class="footer">
@@ -223,7 +225,7 @@
             </div>
             <div class="footer-section">
                 <h4 class="orange">Mail / Téléphone</h4>
-                <p><a href="mailto:contact@hugues-graphiste-video.com">Clique pour m'écrire !</a></p>
+                <p><a href="mailto:contact@hugues-graphiste-video.com">Cliquez pour m'écrire !</a></p>
                 <p>06 52 88 20 99</p>
             </div>
             <div class="footer-section">
