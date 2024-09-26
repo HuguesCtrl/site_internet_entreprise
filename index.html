@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./mediascreen.css">
     <script src="./script.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "nFo6bWaT9A-8FDEEe",
+            });
+        })();
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="./img/Fav/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/Fav/favicon-32x32.png">
@@ -200,10 +209,9 @@
     <!-- Section contact -->
     <section class="contact-section" id="contact">
         <h2>Contactez<span class="orange">-moi</span></h2>
-        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="7c59f497-28b5-4a05-9308-7c12fec876a8">
+        <form id="contact-form" method="POST">
             <!-- <label for="nom">Nom :</label><br> -->
-            <input type="text" id="nom" name="nom" required placeholder="Votre nom"><br><br>
+            <input type="text" id="name" name="name" required placeholder="Votre nom"><br><br>
 
             <!-- <label for="email">Email :</label><br> -->
             <input type="email" id="email" name="email" required placeholder="Votre e-mail"><br><br>
@@ -211,10 +219,10 @@
             <!-- <label for="message">Message :</label><br> -->
             <textarea id="message" name="message" rows="5" required placeholder="Votre message"></textarea><br><br>
 
-            <input type="submit" value="Soumettre votre message" class="button">
+            <button class="button" onclick="sendMail()">Soumettre votre message <i class="fa-solid fa-paper-plane"></i></button>
         </form>
-        <!-- Div pour afficher le message de validation -->
-        <div id="messageStatus"></div>
+        <!-- Paragraphe pour afficher le message de validation -->
+        <p id="feedback" class="hidden">Merci pour votre message, <span class="orange">je vous répondrai très bientôt !</span></p>
     </section>
     <!-- Footer -->
     <footer class="footer">

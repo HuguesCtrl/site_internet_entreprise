@@ -44,26 +44,42 @@ window.onclick = function (event) {
   }
 };
 
-// script.js
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Empêche le rechargement de la page
+// script.js formulaire
+function sendMail() {
+  let params = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+  emailjs
+    .send("service_ehvwy7q", "template_yxn8b4d", params)
+    .then((res) => {
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
 
-    // Récupérer les valeurs des champs
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+      console.log(res);
+    })
+    .catch((err) => console.log(err));
+}
 
-    // Validation simple des champs
-    if (name === "" || email === "" || message === "") {
-      alert("Veuillez remplir tous les champs");
-      return;
-    }
-    //Ajout et retrait du message
-    document.getElementById("feedback").classList.remove("hidden");
-    setTimeout(function () {
-      document.getElementById("feedback").classList.add("hidden");
-    }, 2000);
-    document.getElementById("contact-form").reset();
-  });
+// document
+//   .getElementById("contact-form")
+//   .addEventListener("submit", function (event) {
+//     event.preventDefault(); // Empêche le rechargement de la page
+//     // Récupérer les valeurs des champs
+//     const name = document.getElementById("name").value;
+//     const email = document.getElementById("email").value;
+//     const message = document.getElementById("message").value;
+
+//     // Validation simple des champs
+//     if (name === "" || email === "" || message === "") {
+//       alert("Veuillez remplir tous les champs");
+//       return;
+//     }
+//     document.getElementById("feedback").classList.remove("hidden");
+//     setTimeout(function () {
+//       document.getElementById("feedback").classList.add("hidden");
+//     }, 2000);
+//     document.getElementById("contact-form").reset();
+//   });
