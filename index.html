@@ -8,15 +8,6 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./mediascreen.css">
     <script src="./script.js" defer></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init({
-                publicKey: "nFo6bWaT9A-8FDEEe",
-            });
-        })();
-    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="./img/Fav/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/Fav/favicon-32x32.png">
@@ -209,7 +200,7 @@
     <!-- Section contact -->
     <section class="contact-section" id="contact">
         <h2>Contactez<span class="orange">-moi</span></h2>
-        <form id="contact-form" method="POST">
+        <form id="contact-form" method="POST" action="mail.php">
             <!-- <label for="nom">Nom :</label><br> -->
             <input type="text" id="name" name="name" required placeholder="Votre nom"><br><br>
 
@@ -242,6 +233,39 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Empêche le rechargement de la page
+
+            // Récupérer les données du formulaire
+            const formData = new FormData(this);
+
+            // Envoi AJAX
+            fetch('send_email.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json()) // On attend une réponse JSON du serveur
+                .then(data => {
+                    const responseMessage = document.getElementById('responseMessage');
+
+                    if (data.success) {
+                        responseMessage.textContent = 'Le message a été envoyé avec succès !';
+                        responseMessage.className = 'success';
+
+                        // Effacer les champs du formulaire
+                        document.getElementById('contactForm').reset();
+                    } else {
+                        responseMessage.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
+                        responseMessage.className = 'error';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('responseMessage').textContent = 'Erreur : ' + error;
+                    document.getElementById('responseMessage').className = 'error';
+                });
+        });
+    </script>
 </body>
 
 </html>

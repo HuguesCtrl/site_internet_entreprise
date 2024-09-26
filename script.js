@@ -45,23 +45,29 @@ window.onclick = function (event) {
 };
 
 // script.js formulaire
-function sendMail() {
-  let params = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  };
-  emailjs
-    .send("service_ehvwy7q", "template_yxn8b4d", params)
-    .then((res) => {
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("message").value = "";
+// function sendMail() {
+//   let params = {
+//     name: document.getElementById("name").value,
+//     email: document.getElementById("email").value,
+//     message: document.getElementById("message").value,
+//   };
+//   emailjs
+//     .send("service_ehvwy7q", "template_yxn8b4d", params)
+//     .then((res) => {
+//       document.getElementById("name").value = "";
+//       document.getElementById("email").value = "";
+//       document.getElementById("message").value = "";
 
-      console.log(res);
-    })
-    .catch((err) => console.log(err));
-}
+//       console.log(res);
+//     })
+//     .then(() => {
+//       document.getElementById("feedback").classList.remove("hidden");
+//       setTimeout(function () {
+//         document.getElementById("feedback").classList.add("hidden");
+//       }, 2000);
+//     })
+//     .catch((err) => console.log(err));
+// }
 
 // document
 //   .getElementById("contact-form")

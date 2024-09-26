@@ -1,8 +1,12 @@
 <?php
+// Inclusion de PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
+
+// Initialiser un tableau de réponse
+$response = ['success' => false];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars(trim($_POST['name']));
@@ -10,37 +14,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars(trim($_POST['message']));
 
     if (!empty($name) && !empty($email) && !empty($message)) {
-        // Créer une instance PHPMailer
+        // Création de l'objet PHPMailer
         $mail = new PHPMailer(true);
-        
-        try {
-            // Paramètres du serveur SMTP OVH
-            $mail->isSMTP();
-            $mail->Host = 'ssl0.ovh.net'; // Serveur SMTP OVH
-            $mail->SMTPAuth = true; // Active l'authentification SMTP
-            $mail->Username = 'votre-email@votre-domaine.com'; // Remplacez par votre email OVH
-            $mail->Password = 'votre-mot-de-passe'; // Remplacez par le mot de passe de votre email OVH
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Utilise SSL ou TLS
-            $mail->Port = 465; // Port 465 pour SSL, ou 587 pour TLS
 
-            // Paramètres de l'email
-            $mail->setFrom('contact@hugues-graphiste-video.com', 'Hugues'); // Remplacez par votre email OVH
-            $mail->addAddress('hc.pro@outlook.fr'); // Adresse de destination
-            
+        try {
+            // Paramètres SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.example.com'; // Remplacez par votre serveur SMTP
+            $mail->SMTPAuth = true;
+            $mail->Username = 'votre-email@example.com'; // Remplacez par votre email SMTP
+            $mail->Password = 'votre-mot-de-passe'; // Remplacez par votre mot de passe SMTP
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587; // Port TLS
+
+            // Expéditeur et destinataire
+            $mail->setFrom('votre-email@example.com', 'Votre Nom');
+            $mail->addAddress('destinataire@example.com'); // Adresse du destinataire
+
             // Contenu de l'email
             $mail->isHTML(true);
-            $mail->Subject = 'Nouveau message depuis le formulaire';
+            $mail->Subject = 'Nouveau message de contact';
             $mail->Body = "<h3>Nom : $name</h3><h3>Email : $email</h3><p>Message : $message</p>";
 
             // Envoi de l'email
             $mail->send();
-            echo 'Le message a été envoyé avec succès.';
+            $response['success'] = true;
         } catch (Exception $e) {
-            echo "Le message n'a pas pu être envoyé. Erreur : {$mail->ErrorInfo}";
+            $response['message'] = "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
         }
     } else {
-        echo 'Veuillez remplir tous les champs.';
+        $response['message'] = 'Veuillez remplir tous les champs.';
     }
-} else {
-    echo 'Méthode de requête non valide.';
 }
+
+// Retourner la réponse en JSON
+header('Content-Type: application/json');
+echo json_encode($response);
+?>
